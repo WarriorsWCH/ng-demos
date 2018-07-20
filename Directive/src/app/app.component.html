@@ -1,0 +1,41 @@
+<h2>Hello, Angular</h2>
+<!-- <h2 appGreet>Hello, Angular</h2> -->
+<h2 [appGreet]="'Hello, Angular2.2!'"  author="属性">Hello, Angular2.1</h2>
+
+<ng-template #tpl>
+  <h2>Hello, Angular3!</h2>
+</ng-template>
+
+<ng-template #stpl>
+  Hello, Angular4!
+</ng-template>
+<ng-template #atpl>
+  Hello, Angular5!
+</ng-template>
+<div [ngTemplateOutlet]="atpl"></div>
+<div [ngTemplateOutlet]="stpl"></div>
+
+<ng-template #stpls let-message="message">
+  <p>{{message}}</p>
+</ng-template>
+<ng-template #atpls let-msg="message">
+  <p>{{msg}}</p>
+</ng-template>
+<ng-template #otpls let-msg>
+  <p>{{msg}}</p>
+</ng-template>
+<!-- <div [ngTemplateOutlet]="atpls"
+  [ngOutletContext]="context">
+</div>
+<div [ngTemplateOutlet]="stpls"
+  [ngOutletContext]="context">
+</div>
+<div [ngTemplateOutlet]="otpls"
+  [ngOutletContext]="context">
+</div> -->
+<ng-container *ngTemplateOutlet="atpls; context: context"></ng-container>
+<ng-container *ngTemplateOutlet="stpls; context: context"></ng-container>
+<ng-container *ngTemplateOutlet="otpls; context: context"></ng-container>
+
+
+<h2 *appExeUnless="condition">Hello, Angular7!</h2> 

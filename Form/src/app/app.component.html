@@ -1,0 +1,135 @@
+<!-- <input type="text" required [(ngModel)]="username" #userName="ngModel"> {{userName.valid}} -->
+
+<!-- <input type="text" required minlength="3" [(ngModel)]="username" #userName="ngModel">
+<hr>
+<div *ngIf="userName.errors?.required">请您输入用户名</div>
+<div *ngIf="userName.errors?.minlength">
+  用户名的长度必须大于 {{userName.errors?.minlength.requiredLength}}，当前的长度为 {{userName.errors?.minlength.actualLength}}
+</div> -->
+
+<!-- <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+  <fieldset ngModelGroup="user">
+    <input type="text" required minlength="3" name="username" [(ngModel)]="username" #userName="ngModel">
+    <hr>
+    <div *ngIf="userName.errors?.required">请您输入用户名</div>
+    <div *ngIf="userName.errors?.minlength">
+      用户名的长度必须大于 {{userName.errors?.minlength.requiredLength}}，当前的长度为 {{userName.errors?.minlength.actualLength}}
+    </div>
+    <input type="password" ngModel name="password">
+  </fieldset>
+  <button type="submit">提交</button>
+  <hr> {{loginForm.value | json}}
+</form> -->
+
+<!-- <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+  <fieldset ngModelGroup="user">
+    <input type="text" required minlength="3" name="username" [(ngModel)]="username" #userName="ngModel">
+    <hr>
+    <p>Name控件的valid状态：{{userName.valid}} - 表示控件有效</p>
+    <p>Name控件的invalid状态：{{userName.invalid}} - 表示控件无效</p>
+    <p>Name控件的pristine状态：{{userName.pristine}} - 表示控件值未改变</p>
+    <p>Name控件的dirty状态：{{userName.dirty}} - 表示控件值已改变</p>
+    <p>Name控件的touched状态：{{userName.touched}} - 表示控件已被访问过</p>
+    <p>Name控件的untouched状态：{{userName.untouched}} - 表示控件未被访问过</p>
+    <div *ngIf="userName.errors?.required">请您输入用户名</div>
+    <div *ngIf="userName.errors?.minlength">
+      用户名的长度必须大于 {{userName.errors?.minlength.requiredLength}}，当前的长度为 {{userName.errors?.minlength.actualLength}}
+    </div>
+    <input type="password" required ngModel name="password">
+  </fieldset>
+  <button type="submit">提交</button>
+  <hr> {{loginForm.value | json}}
+</form> -->
+
+<!-- <form #loginForm="ngForm">
+  Angular版本：
+  <div *ngFor="let version of versions;">
+    <input [attr.id]="version" name="version" ngModel required [value]="version" type="radio">
+    <label [attr.for]="version">{{version}}</label>
+  </div>
+  <hr> {{loginForm.value | json}}
+</form> -->
+
+<!-- <form #loginForm="ngForm">
+  Angular版本：
+  <select name="version" [ngModel]="versions[0]">
+    <option *ngFor="let version of versions;" [value]="version">
+      {{version}}
+    </option>
+  </select>
+  <hr> {{loginForm.value | json}}
+</form> -->
+
+<h4>{{title}}</h4>
+<form #f="ngForm" novalidate>
+      <div class="form-group">
+        <label>名字</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="user.name">
+      </div>
+      <div class="form-group">
+        <label>年龄</label>
+        <input type="number" class="form-control" name="age" [(ngModel)]="user.age">
+      </div>
+      <div class="form-group">
+        <label>性别</label>
+        <label *ngFor="let gender of genders;">
+          <input type="radio" name="gender" [(ngModel)]="user.gender" 
+            [value]="gender.value">
+            {{gender.display}}
+        </label>
+      </div>
+      <div class="form-group">
+        <label>角色</label>
+        <select name="role" class="form-control" [(ngModel)]="user.role">
+          <option *ngFor="let role of roles" [value]="role.value">
+            {{role.display}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>主题</label>
+        <select name="theme" class="form-control" [(ngModel)]="user.theme">
+          <option *ngFor="let theme of themes" [ngValue]="theme">
+            {{theme.display}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="isActive" [(ngModel)]="user.isActive">
+            是否激活
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>话题</label>
+        <select multiple name="topics" class="form-control" [(ngModel)]="user.topics">
+          <option *ngFor="let topic of topics" [value]="topic.value">
+            {{topic.display}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>爱好</label>
+        <span *ngFor="let hobby of hobbies">
+            <input type="checkbox" name="bobby" [value]="hobby.value" 
+                   [checked]="user.hobbies[hobby.value]"
+             (change)="changeHobby(hobby, $event)" />
+            {{hobby.display}}
+        </span>
+      </div>
+      <div class="form-group">
+        <label>地址</label>
+        <select name="province" class="form-control" [(ngModel)]="user.province" 
+          (change)="changeProvince($event.target.value)">
+          <option *ngFor="let province of provinces" [value]="province.pk">
+            {{province.pv}}
+          </option>
+        </select>
+        <select name="city" class="form-control" [(ngModel)]="user.city">
+          <option *ngFor="let city of cities" [value]="city.ck">{{city.cv}}</option>
+        </select>
+      </div>
+      <button type="submit" (click)="save()" class="btn btn-default">保存</button>
+      <hr> {{f.value | json}}
+</form>

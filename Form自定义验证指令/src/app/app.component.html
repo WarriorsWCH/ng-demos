@@ -1,0 +1,46 @@
+<div>
+  <h3>Add User</h3>
+  <form novalidate (ngSubmit)="saveUser()" [formGroup]="user">
+    <div>
+      <label for="">Username</label>
+      <input type="text" formControlName="username">
+      <div class="error" *ngIf="user.get('username').invalid && 
+          user.get('username').touched">
+        Username is required (minimum 5 characters, maximum 8 characters).
+      </div>
+      <!--<pre *ngIf="user.get('username').errors" class="margin-20">
+        {{ user.get('username').errors | json }}</pre>-->
+    </div>
+    <div>
+      <label for="">Email</label>
+      <input type="email" formControlName="email">
+      <div class="error" *ngIf="user.get('email').invalid && user.get('email').touched">
+        Email is required and format should be
+        <i>24065****@qq.com</i>.
+      </div>
+      <!--<pre *ngIf="user.get('email').errors" class="margin-20">
+        {{ user.get('email').errors | json }}</pre>-->
+    </div>
+    <div>
+      <label for="">Password</label>
+      <input type="password" formControlName="password">
+      <div class="error" *ngIf="user.get('password').invalid && 
+          user.get('password').touched">
+        Password is required
+      </div>
+      <!--<pre *ngIf="user.get('password').errors" class="margin-20">
+        {{ user.get('password').errors | json }}</pre>-->
+    </div>
+    <div>
+      <label for="">Retype password</label>
+      <input type="password" formControlName="confirmPassword" validateEqual="password">
+      <div class="error" *ngIf="user.get('confirmPassword').invalid && 
+          user.get('confirmPassword').touched">
+        Password mismatch
+      </div>
+      <!--<pre *ngIf="user.get('confirmPassword').errors" class="margin-20">
+        {{ user.get('confirmPassword').errors | json }}</pre>-->
+    </div>
+    <button type="submit" class="btn-default" [disabled]="user.invalid">Submit</button>
+  </form>
+</div>

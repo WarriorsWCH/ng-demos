@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   }
 
   saveUser(): void {
-
+    console.log(this.user);
   }
 }
 

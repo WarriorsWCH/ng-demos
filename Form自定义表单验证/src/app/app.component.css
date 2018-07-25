@@ -1,0 +1,5 @@
+.error {
+    border: 1px dashed red;
+    color: red;
+    padding: 4px;
+}
